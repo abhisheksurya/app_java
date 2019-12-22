@@ -29,7 +29,7 @@ ext {
             'junit:junit:4.12',
             'org.scalamock:scalamock_2.12:4.1.0',
             'org.mockito:mockito-core:3.2.4',
-            'org.assertj:assertj-core:3.11.0',
+            'org.assertj:assertj-core:3.14.0',
             'com.typesafe.akka:akka-testkit_2.12:' + akkaVersion
     ]
 
