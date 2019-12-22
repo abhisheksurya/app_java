@@ -1,0 +1,62 @@
+/*
+    Gradle script for integration tests.
+    Requires plugin: Java, Scala
+ */
+
+configurations {
+    integTestCompile.extendsFrom testCompile
+    integTestRuntime.extendsFrom testRuntime
+    integTestArtifacts.extendsFrom integTestRuntime
+}
+
+sourceSets {
+    integTest {
+        java {
+            srcDir 'src/integTest/java'
+        }
+        resources {
+            srcDir 'src/integTest/resources'
+        }
+        scala {
+            srcDir 'src/integTest/scala'
+        }
+        compileClasspath += main.output + test.output + configurations.integTestCompile
+        runtimeClasspath = compileClasspath + configurations.integTestRuntime
+    }
+}
+
+/* create a jar with all the test classes */
+task integTestJar(type: Jar) {
+    dependsOn integTestClasses
+    from sourceSets.integTest.output.classesDirs
+    classifier = 'integtest'
+}
+
+task integTestJavadoc(type: Javadoc) {
+    source sourceSets.integTest.allJava
+}
+
+task integTestScaladoc(type: ScalaDoc) {
+    source sourceSets.integTest.allScala
+}
+
+task integTest(dependsOn:['classes', 'integTestClasses'], type: Test, group: 'verification') {
+    testClassesDirs = sourceSets.integTest.output.classesDirs
+    scanForTestClasses = true
+    classpath = sourceSets.integTest.runtimeClasspath \
+        + files(sourceSets.integTest.output.classesDirs) \
+        + files(sourceSets.integTest.output.resourcesDir)
+    reports.html.destination = file("$buildDir/reports/integTest")
+
+    /*
+    doLast {
+        println('output: ')
+        sourceSets.integTest.output.dirs.each {File f -> println f.absolutePath}
+        println('testClassesDir:' + sourceSets.integTest.output.classesDir)
+
+        println('classpath: ')
+        classpath.each {File f -> println f.absolutePath}
+    }
+    */
+}
+
