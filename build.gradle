@@ -30,7 +30,6 @@ ext {
             'org.scalamock:scalamock_2.12:4.1.0',
             'org.mockito:mockito-core:3.2.4',
             'org.assertj:assertj-core:3.14.0',
-            'com.typesafe.akka:akka-testkit_2.12:' + akkaVersion
     ]
 
     jacksonDeps = [
@@ -51,8 +50,6 @@ ext {
             [group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0']
     ]
 
-    compileDeps += jacksonDeps
-    compileDeps += jerseyDeps
 }
 
 dependencies {
