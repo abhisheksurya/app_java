@@ -64,7 +64,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // PostgreSQL driver
-    jooqRuntime 'postgresql:postgresql:9.1-901.jdbc4'
+    jooqRuntime 'postgresql:postgresql:9.4.1208-jdbc42-atlassian-hosted'
     compile 'org.jooq:jooq'
 }
 
