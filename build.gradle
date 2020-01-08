@@ -119,7 +119,7 @@ jooq {
             }
             target {
                 packageName = 'appjava.db'
-                directory = '/src/generated/jooq/java'
+                //directory = '/src/generated/jooq/java'
             }
         }
     }
