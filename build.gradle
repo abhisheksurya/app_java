@@ -68,7 +68,7 @@ dependencies {
     compile 'org.jooq:jooq'
 }
 
-jooq {
+/*jooq {
     version = '3.0.0' // the default (can be omitted)
     edition = 'OSS'    // the default (can be omitted), other allowed values are PRO, PRO_JAVA_6, and TRIAL
     //generateSchemaSourceOnCompilation = true
@@ -84,7 +84,7 @@ jooq {
                     value = 'false'
                 }
             }*/
-        }
+ /*       }
         generator {
             name = 'org.jooq.codegen.DefaultGenerator'
             strategy {
@@ -123,7 +123,7 @@ jooq {
             }
         }
     }
-}
+} */
 
 application {
     // Define the main class for the application.
