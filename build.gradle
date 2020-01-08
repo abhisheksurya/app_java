@@ -12,12 +12,16 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+
+    // Apply JOOQ plugin
+    id 'nu.studer.jooq' version '3.0.0'
 }
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }
 
 ext {
@@ -58,6 +62,67 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+
+    // PostgreSQL driver
+    jooqRuntime 'postgresql:postgresql:9.1-901.jdbc4'
+    compile 'org.jooq:jooq'
+}
+
+jooq {
+    version = '3.0.0' // the default (can be omitted)
+    edition = 'OSS'    // the default (can be omitted), other allowed values are PRO, PRO_JAVA_6, and TRIAL
+    //generateSchemaSourceOnCompilation = true
+    appjava(sourceSets.main) {
+        jdbc {
+            driver = 'org.postgresql.Driver'
+            url = 'jdbc:postgresql://localhost:5432/appjava'
+            user = 'postgres'
+            password = 'postgres'
+            /*properties {
+                property {
+                    key = 'ssl'
+                    value = 'false'
+                }
+            }*/
+        }
+        generator {
+            name = 'org.jooq.codegen.DefaultGenerator'
+            strategy {
+                name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+                // ...
+            }
+            database {
+                name = 'org.jooq.meta.postgres.PostgresDatabase'
+                inputSchema = 'public'
+                includes = '.*'
+                forcedTypes {
+                    forcedType {
+                        name = 'varchar'
+                        expression = '.*'
+                        types = 'JSONB?'
+                    }
+                    forcedType {
+                        name = 'varchar'
+                        expression = '.*'
+                        types = 'INET'
+                    }
+                }
+                // ...
+            }
+            generate {
+                relations = true
+                deprecated = true
+                records = true
+                immutablePojos = true
+                fluentSetters = true
+                // ...
+            }
+            target {
+                packageName = 'appjava.db'
+                directory = '/src/generated/jooq/java'
+            }
+        }
+    }
 }
 
 application {
