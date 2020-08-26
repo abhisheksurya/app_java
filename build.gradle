@@ -32,7 +32,7 @@ ext {
             'org.scalatest:scalatest_2.12:3.2.0-SNAP10',
             'junit:junit:4.13',
             'org.scalamock:scalamock_2.12:4.4.0',
-            'org.mockito:mockito-core:3.2.4',
+            'org.mockito:mockito-core:3.5.7',
             'org.assertj:assertj-core:3.14.0',
     ]
 
