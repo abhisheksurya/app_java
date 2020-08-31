@@ -14,7 +14,7 @@ plugins {
     id 'application'
 
     // Apply JOOQ plugin
-    id 'nu.studer.jooq' version '3.0.0'
+    id 'nu.studer.jooq' version '5.0.2'
 }
 
 repositories {
