@@ -30,7 +30,7 @@ ext {
 
     testDeps = [
             'org.scalatest:scalatest_2.12:3.2.0-SNAP10',
-            'junit:junit:4.13',
+            'junit:junit:4.13.1',
             'org.scalamock:scalamock_2.12:4.4.0',
             'org.mockito:mockito-core:3.2.4',
             'org.assertj:assertj-core:3.14.0',
@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.google.guava:guava:28.2-jre'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
 
     // PostgreSQL driver
     jooqRuntime 'postgresql:postgresql:9.4.1208-jdbc42-atlassian-hosted'
