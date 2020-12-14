@@ -29,7 +29,7 @@ ext {
     jerseyVersion = "2.27"
 
     testDeps = [
-            'org.scalatest:scalatest_2.12:3.2.0-SNAP10',
+            'org.scalatest:scalatest_2.12:3.3.0-SNAP3',
             'junit:junit:4.13',
             'org.scalamock:scalamock_2.12:4.4.0',
             'org.mockito:mockito-core:3.2.4',
