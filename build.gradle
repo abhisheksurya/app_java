@@ -33,7 +33,7 @@ ext {
             'junit:junit:4.13',
             'org.scalamock:scalamock_2.12:4.4.0',
             'org.mockito:mockito-core:3.2.4',
-            'org.assertj:assertj-core:3.14.0',
+            'org.assertj:assertj-core:3.19.0',
     ]
 
     jacksonDeps = [
